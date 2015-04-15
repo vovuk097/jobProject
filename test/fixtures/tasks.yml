@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  key: MyString
+  priority: MyString
+  reporter: MyString
+  assignee: MyString
+  description: MyString
+
+two:
+  key: MyString
+  priority: MyString
+  reporter: MyString
+  assignee: MyString
+  description: MyString

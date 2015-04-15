@@ -1,0 +1,7 @@
+<%- model_class = Task -%>
+
+<div class="col-md-4 col-md-offset-4">
+  <h1 align="center"><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+
+<%= render :partial => 'form' %>

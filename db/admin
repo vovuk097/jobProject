@@ -1,0 +1,3 @@
+UPDATE Users
+SET admin="true"
+WHERE id=1;

@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <%= form_for(@task) do |f| %>
+
+        <h5><p><%=f.label :key %></p></h5>
+        <%= f.text_field :key, class: 'form-control' %>
+
+        <h5><p><%= f.label :priority %></p></h5>
+        <%= f.select :priority, [['Trivial','trivial'],['Minor','minor'],['Major','major'],['Critical','critical'],['Blocker','blocker']] %>
+
+        <h5><p><%= f.label :reporter %></p></h5>
+        <!--<%= f.text_field :reporter, class: 'form-control' %>-->
+        <%= f.select(:reporter, options_for_select(@user_email)) %>
+
+        <h5><p><%= f.label :assignee %></p></h5>
+        <%= f.select(:assignee, options_for_select(@user_email)) %>
+
+        <h5><p><%= f.label :description %></p></h5>
+        <%= f.text_area :description, class: 'form-control' %>
+
+        <%= f.submit 'Save changes', class: 'btn btn-success' %>
+
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    tasks_path, :class => 'btn btn-warning' %>
+    <% end %>
+    </br>
+  </div>
+</div>

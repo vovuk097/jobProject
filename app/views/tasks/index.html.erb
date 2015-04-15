@@ -1,0 +1,48 @@
+<%- model_class = Task -%>
+
+  <h1 align="center"><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+<%= will_paginate %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:key) %></th>
+      <th><%= model_class.human_attribute_name(:priority) %></th>
+      <th><%= model_class.human_attribute_name(:reporter) %></th>
+      <th><%= model_class.human_attribute_name(:assignee) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <% if current_user.admin? %>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= link_to task.id, task_path(task) %></td>
+        <td><%= link_to task.key, task_path(task) %></td>
+        <td><%= task.priority %></td>
+        <td><%= task.reporter %></td>
+        <td><%= task.assignee %></td>
+        <td><%= task.description %></td>
+        <td><%=l task.created_at %></td>
+        <% if current_user.admin? %>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_task_path(task), :class => 'btn btn-info btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      task_path(task),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_task_path,
+            :class => 'btn btn-success' %>

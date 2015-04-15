@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+Volodymyr:
+  name: Volodymyr P
+  email: vovo@gmail.com
+  encrypted_password: 123456
+  salt: 12443
+  admin: true
+
+other_user1:
+  name: Volodym
+  email: vov@gmail.com
+  encrypted_password: 1234567
+  salt: 124437
+
+other_user2:
+  name: Volodym
+  email: vov@gmail.com
+  encrypted_password: 1234567
+  salt: 124437
+  admin: false
