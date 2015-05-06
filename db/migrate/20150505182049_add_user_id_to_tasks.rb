@@ -3,5 +3,4 @@ class AddUserIdToTasks < ActiveRecord::Migration
     add_column :tasks, :user_id, :integer
     add_index :tasks, :user_id
   end
-
 end

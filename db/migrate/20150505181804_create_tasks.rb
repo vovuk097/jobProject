@@ -9,6 +9,5 @@ class CreateTasks < ActiveRecord::Migration
 
       t.timestamps
     end
-
   end
 end
