@@ -1,30 +1,14 @@
 Rails.application.routes.draw do
-  resources :tasks
+  devise_for :users, :controllers => { registrations: 'registrations' }
 
   resources :users
-  resources :sessions
 
-  get 'sessions/new'
+  resources :tasks
+  root 'users#home'
 
-  get 'sessions/create'
-
-  get 'sessions/destroy'
-
-  get 'users/new'
-
-  get 'users/show'
-
-  get 'users/update'
-
-
-  get 'log_out' => 'sessions#destroy', :as => 'log_out'
-  get 'log_in'  => 'sessions#new',     :as => 'log_in'
-  get 'log_in_post'=> 'sessions#create',:as => 'log_in_post'
-  get 'sign_up' => 'users#new',        :as => 'sign_up'
-  get 'home'    => 'users#home',      :as => 'home'
   get 'myTasks' => 'tasks#current_user_tasks',:as => 'myTasks'
 
-  root :to => 'users#home'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -29,26 +29,13 @@
     <div class="container">
       <div class="row">
 
-          <%= bootstrap_flash %>
+        <%= bootstrap_flash %>
           <%= yield %>
           <!--<% flash.each do |name, msg| %>
               <%= content_tag :div, msg, :id => "flash#{name}" %>
           <% end %>
           -->
         </div>
-
-        <!--
-        <div class="col-lg-3">
-          <div class="well sidebar-nav">
-            <h3>Task menu</h3>
-            <ul class="nav nav-list">
-              <li><%= link_to 'All tasks', tasks_path %></li>
-              <li><%= link_to 'My Tasks', myTasks_path  %></li>
-            </ul>
-          </div>
-        </div>
-        -->
-
 
 
       <%= render 'layouts/footer' %>

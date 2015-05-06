@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   include TasksHelper
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :denny_access, only: [:show, :new, :index, :edit, :update, :destroy]
+  before_action :user_signed_in?, only: [:show, :new, :index, :edit, :update, :destroy]
   #before_action :admin_user,     only: :destroy
   before_action :correct_user,   only: [:edit, :update, :destroy]
 
@@ -58,7 +58,7 @@ class TasksController < ApplicationController
 
   private
 
-    def task_params
-      params.require(:task).permit(:key, :priority, :reporter, :assignee, :description)
-    end
+  def task_params
+    params.require(:task).permit(:key, :priority, :reporter, :assignee, :description)
+  end
 end

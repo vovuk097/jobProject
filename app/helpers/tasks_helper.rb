@@ -1,14 +1,25 @@
 module TasksHelper
 
+=begin
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
+=end
 
   def correct_user
     @task = Task.find(params[:id])
-    if !current_user.admin?
+    if !(current_user.has_role? :admin)
+    #if !current_user.admin?
       redirect_to(root_url) unless current_user_task_id?(current_user.id,@task.user_id)
     end
+  end
+
+  def current_user_task_id
+    @current_user_task_id ||= Task.where(user_id: current_user.id)
+  end
+
+  def current_user_task_id?(user_id,task_user_id)
+    user_id == task_user_id
   end
 
   def current_user_tasks
@@ -26,7 +37,7 @@ module TasksHelper
   end
 
   def admin_user
-    redirect_to(root_url) unless current_user.admin?
+    redirect_to(root_url) unless current_user.has_role? :admin
   end
 
   def set_task

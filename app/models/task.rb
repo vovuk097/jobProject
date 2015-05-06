@@ -1,8 +1,8 @@
 class Task < ActiveRecord::Base
+
   belongs_to :user
   before_save :update_user_id
   before_update :update_user_id
-
 
   attr_accessible :key, :priority, :reporter, :assignee, :description
 
