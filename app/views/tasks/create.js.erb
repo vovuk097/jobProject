@@ -1,0 +1,3 @@
+<% broadcast '/tasks/new' do %>
+    $("#share").append("<%= escape_javascript render(@task) %>");
+<% end %>

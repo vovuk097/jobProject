@@ -6,7 +6,9 @@ class TasksController < ApplicationController
   before_action :correct_user,   only: [:edit, :update, :destroy]
 
   def index
-    @tasks = Task.paginate(page: params[:page], :per_page => 6)
+    @task = Task.new
+    manageUsers
+    @tasks = Task.paginate(page: params[:page], :per_page => 20)
   end
 
   def show
@@ -24,6 +26,10 @@ class TasksController < ApplicationController
   end
 
   def create
+    @task = Task.create!(task_params)
+  end
+
+  def createnew
     @task = Task.new(task_params,user_id: User.find_by_name(:reporter))
     respond_to do |format|
       if @task.save
@@ -34,6 +40,7 @@ class TasksController < ApplicationController
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   def update
