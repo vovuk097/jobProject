@@ -20,4 +20,7 @@ $(function() {
     faye.subscribe("/tasks/new", function(data) {
         eval(data);
     });
+    faye.subscribe("/tasks/deleted", function(data) {
+        eval(data);
+    });
 });

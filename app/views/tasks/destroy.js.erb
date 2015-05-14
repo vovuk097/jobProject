@@ -1,0 +1,3 @@
+<% broadcast "/tasks/deleted" do %>
+    $("tr#delete-<%= @task.id %>").remove();
+<% end %>
