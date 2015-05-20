@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 gem 'nifty-generators'
 gem 'faye'
 gem 'thin'
+gem "mustache", "~> 1.0"
 
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
@@ -20,6 +21,7 @@ gem 'jazz_hands', '~> 0.5.2', github: 'nixme/jazz_hands', branch: 'bring-your-ow
 gem 'pry', '~> 0.9.12'
 gem 'better_errors'
 gem 'faye-websocket'
+gem 'mustache-js-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'

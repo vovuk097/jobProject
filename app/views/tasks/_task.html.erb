@@ -5,7 +5,7 @@
   <td><%= task.reporter %></td>
   <td><%= task.assignee %></td>
   <td><%= task.description %></td>
-  <td><%=l task.created_at %></td>
+  <td><%= task.created_at %></td>
   <% if current_user.has_role? :admin %>
       <td>
         <%= link_to t('.edit', :default => t("helpers.links.edit")),

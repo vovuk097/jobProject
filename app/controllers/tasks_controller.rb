@@ -9,6 +9,10 @@ class TasksController < ApplicationController
     @task = Task.new
     manageUsers
     @tasks = Task.paginate(page: params[:page], :per_page => 20).order('created_at DESC')
+    respond_to do |format|
+      format.html
+      format.json { render json: @tasks.to_json}
+    end
   end
 
   def show
@@ -29,7 +33,7 @@ class TasksController < ApplicationController
     @task = Task.create!(task_params)
     respond_to do |format|
       format.js
-      format.json { render json:@task}
+      format.json { render json: @task}
     end
   end
 
