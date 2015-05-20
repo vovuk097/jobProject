@@ -10,8 +10,9 @@ class TasksController < ApplicationController
     manageUsers
     @tasks = Task.paginate(page: params[:page], :per_page => 20).order('created_at DESC')
     respond_to do |format|
-      format.html
-      format.json { render json: @tasks.to_json}
+        format.html
+        format.json { render json: @tasks.to_json}
+        format.js {}
     end
   end
 
@@ -30,9 +31,10 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.create!(task_params)
+    broadcast('/tasks/new')
+    @task = Task.create(task_params)
     respond_to do |format|
-      format.js
+      format.js {}
       format.json { render json: @task}
     end
   end
@@ -64,11 +66,13 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    broadcast('/tasks/deleted')
+    flash[:success] = 'User deleted'
     @task.destroy
     respond_to do |format|
       format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
       format.json { head :no_content }
-      format.js { }
+      format.js { flash[:notice] = 'Task was successfully destroyed.'}
     end
   end
 
