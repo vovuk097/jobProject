@@ -15,12 +15,4 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
-$(function() {
-    var faye = new Faye.Client('http://localhost:9292/faye');
-    faye.subscribe("/tasks/new", function(data) {
-        eval(data);
-    });
-    faye.subscribe("/tasks/deleted", function(data) {
-        eval(data);
-    });
-});
+

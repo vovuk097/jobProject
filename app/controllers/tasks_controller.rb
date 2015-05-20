@@ -8,7 +8,7 @@ class TasksController < ApplicationController
   def index
     @task = Task.new
     manageUsers
-    @tasks = Task.paginate(page: params[:page], :per_page => 20)
+    @tasks = Task.paginate(page: params[:page], :per_page => 20).order('created_at DESC')
   end
 
   def show
@@ -27,6 +27,10 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.create!(task_params)
+    respond_to do |format|
+      format.js
+      format.json { render json:@task}
+    end
   end
 
   # def createnew
@@ -43,8 +47,9 @@ class TasksController < ApplicationController
   # end
 
   def update
+    status=@task.update(task_params)
     respond_to do |format|
-      if @task.update(task_params)
+      if status
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @task }
       else

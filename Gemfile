@@ -16,6 +16,11 @@ gem 'devise'
 gem 'protected_attributes'
 gem "rolify"
 
+gem 'jazz_hands', '~> 0.5.2', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+gem 'pry', '~> 0.9.12'
+gem 'better_errors'
+gem 'faye-websocket'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use sqlite3 as the database for Active Record
